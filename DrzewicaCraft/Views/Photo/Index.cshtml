@@ -1,0 +1,31 @@
+﻿@model IEnumerable<Entities.Photo>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Lista Zdjęć</h2>
+
+
+@*<p>
+        @Html.ActionLink("Create New", "Create")
+    </p>*@
+@if (Model != null)
+{
+    <div class="row">
+        @foreach (var item in Model)
+        {
+        <div class="col-md-4">
+            <h4>@Html.DisplayFor(model => item.Name)</h4>
+            @*<img src="@item.ImagePath"/>*@
+            <p>@Html.ActionLink("Detale", "Details", new { id = item.Id })</p>
+        </div>
+        }
+    </div>
+
+}
+else
+{
+    @Html.Raw("Przykro nam... obecnie nie posiadamy żadnych zdjęć.");
+}

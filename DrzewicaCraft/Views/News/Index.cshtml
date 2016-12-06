@@ -1,0 +1,28 @@
+﻿@model IEnumerable<DrzewicaCraft.Models.NewsViewModels>
+
+@{
+    ViewBag.Title = "Aktualności";
+}
+
+<h2>Aktualności</h2>
+
+<p>
+    @Html.ActionLink("Utwórz nowy wpis", "Create")
+</p>
+
+@if (Model != null)
+{
+    foreach (var item in Model)
+    {
+        <div class="jumbotron">
+            <h4>@item.Title</h4>
+            <div class="lead">@item.Description</div>
+        </div>
+
+    }
+}
+else
+{
+    @Html.Raw("Przykro nam, ale obecnie nie ma żadnych aktualności.");
+}
+
