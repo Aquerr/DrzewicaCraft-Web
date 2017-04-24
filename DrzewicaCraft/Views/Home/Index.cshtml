@@ -1,17 +1,17 @@
 ﻿@{
-    ViewBag.Title = "Strona Główna";
+    ViewBag.Title = "DrzewicaCraft";
 }
 
 <div class="jumbotron">
     <h1>DrzewicaCraft</h1>
     <p class="lead">DrzewicaCraft to projekt budownlany w grze, który wystartował w czerwcu 2016-go roku.</p>
     <p class="lead">Celem projektu jest zbudowanie miasta Drzewica w popularnej grze komputerowej - Minecraft.</p>
-    <p><a href="" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
+    <p><a href="" class="btn btn-primary btn-lg">Dowiedz się więcej &raquo;</a></p>
 </div>
 
 <div class="row">
     <div class="col-md-4">
-        <p><a class="btn btn-primary btn-lg" href="~/Views/News/Index.cshtml">Aktualności</a></p>
+        <p>@Html.ActionLink("Aktualność","Index","News", new {@class = "btn btn-default" })</p>
     </div>
 </div>
 
