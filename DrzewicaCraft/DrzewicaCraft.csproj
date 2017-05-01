@@ -87,6 +87,8 @@
     <Reference Include="System.Net.Http.Formatting, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.3\lib\net45\System.Net.Http.Formatting.dll</HintPath>
     </Reference>
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -213,6 +215,35 @@
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\NewsController.cs" />
     <Compile Include="Controllers\PhotoController.cs" />
+    <Compile Include="Database\DataCollector.cs" />
+    <Compile Include="Database\EF\Comment.cs">
+      <DependentUpon>DrwaDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\EF\DrwaDB.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DrwaDB.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\EF\DrwaDB.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DrwaDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\EF\DrwaDB.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DrwaDB.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Database\EF\News.cs">
+      <DependentUpon>DrwaDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\EF\Photo.cs">
+      <DependentUpon>DrwaDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\EF\User.cs">
+      <DependentUpon>DrwaDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\Photo.cs" />
     <Compile Include="ErrorHandler\AiHandleErrorAttribute.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -228,6 +259,16 @@
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Database\EF\DrwaDB.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>DrwaDB.edmx</DependentUpon>
+      <LastGenOutput>DrwaDB.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Database\EF\DrwaDB.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>DrwaDB.edmx</DependentUpon>
+      <LastGenOutput>DrwaDB.cs</LastGenOutput>
+    </Content>
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -237,6 +278,13 @@
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <EntityDeploy Include="Database\EF\DrwaDB.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>DrwaDB.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Database\EF\DrwaDB.edmx.diagram">
+      <DependentUpon>DrwaDB.edmx</DependentUpon>
     </Content>
     <None Include="Properties\PublishProfiles\CustomProfile.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
@@ -302,17 +350,10 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\DataBase\DataBase.csproj">
-      <Project>{a1b5dab1-9f25-446f-8745-30460dc2f508}</Project>
-      <Name>DataBase</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Entities\Entities.csproj">
-      <Project>{ADDB019C-7744-49D2-8E87-78EBBB31DBCA}</Project>
-      <Name>Entities</Name>
-    </ProjectReference>
+    <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <ItemGroup>
-    <WCFMetadata Include="Service References\" />
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
