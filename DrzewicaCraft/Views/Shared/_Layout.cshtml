@@ -8,7 +8,7 @@
     @Scripts.Render("~/bundles/modernizr")
 </head>
 <body class="landing">
-<div class="navbar navbar-inverse navbar-fixed-top">
+<!--<div class="navbar navbar-inverse navbar-fixed-top">
     <div class="container">
         <div class="navbar-header">
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -21,24 +21,31 @@
         </div>
         <div class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
-                <li>@Html.ActionLink("Aktualności","Index","News")</li>
+                @*<li>@Html.ActionLink("Aktualności","Index","News")</li>
                 <li>@Html.ActionLink("Zdjęcia","Index","Photo")</li>
                 <li>@Html.ActionLink("O projekcie", "About", "Home")</li>
-                <li>@Html.ActionLink("Kontakt", "Contact", "Home")</li>
+                <li>@Html.ActionLink("Kontakt", "Contact", "Home")</li>*@
             </ul>
-            @Html.Partial("_LoginPartial")
+            @*@Html.Partial("_LoginPartial")*@
         </div>
     </div>
-</div>
+</div>-->
     
+<header id="header" class="alt">
+    <h1><a href="~/"><img src="../../Images/DrzewicaCraftV2-NoBackground.png" height="64" width="64" alt="NoLogoFound"/></a></h1>
+    <nav class="nav">
+        <ul>
+            <li>@Html.ActionLink("Aktualności","Index","News")</li>
+        </ul>
+    </nav>
 
-<div class="">
+</header>
+    
         @RenderBody()
         <hr />
         <footer>
             <p>&copy; @DateTime.Now.Year - DrzewicaCraft</p>
         </footer>
-    </div>
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
