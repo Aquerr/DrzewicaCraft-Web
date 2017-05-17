@@ -48,6 +48,11 @@ body {
     -webkit-text-size-adjust: none;
 }
 
+.bannerImage {
+    max-height: 392px;
+    max-width: 329px;
+}
+
 /* Box Model */
 
 *, *:before, *:after {
@@ -82,7 +87,7 @@ body {
 }
 
 .container {
-    width: 60em;
+    /*width: 60em;*/
 }
 
 @media screen and (max-width: 1680px) {
@@ -1831,7 +1836,14 @@ p {
     margin: 0 0 2em 0;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1 {
+    color: #fff;
+    font-weight: 300;
+    line-height: 1em;
+    margin: 0 0 0.5em 0;
+}
+
+h2, h3, h4, h5, h6 {
     color: #646464;
     font-weight: 300;
     line-height: 1em;
@@ -2834,6 +2846,7 @@ body.landing #page-wrapper {
     right: 0.75em;
     top: 0;
     vertical-align: middle;
+    /*color: #bbb;*/
 }
 
 #header nav > ul {
@@ -2927,13 +2940,15 @@ body.landing #page-wrapper {
 }
 
 #header.alt {
-    -moz-animation: none;
-    -webkit-animation: none;
+    -moz-animation: all 1s;
+    -webkit-animation: all 1s;
     -ms-animation: none;
     animation: none;
-    background: none;
-    color: rgba(255, 255, 255, 0.75);
+    background: #fff;
+    /*color: rgba(255, 255, 255, 0.75);*/
+    color: #bbb;
     position: absolute;
+    transition: all 1s;
 }
 
 #header.alt nav > ul > li a:not(.button).icon:before {
@@ -3028,12 +3043,12 @@ body.landing #page-wrapper {
 /* Banner */
 
 #banner {
-    background-attachment: scroll,							fixed;
-    background-color: #666;
-    background-image: url("banner.jpg");
-    background-position: top left,						center center;
-    background-repeat: repeat,							no-repeat;
-    background-size: auto,							cover;
+    background-attachment: scroll, fixed;
+    background-color: #fff;
+    background-image: url('overlayWhite5.png'),url('banner.jpg');
+    background-position: top left, center center;
+    background-repeat: repeat, no-repeat;
+    background-size: auto, cover;
     color: #fff;
     padding: 12em 0 20em 0;
     text-align: center;
