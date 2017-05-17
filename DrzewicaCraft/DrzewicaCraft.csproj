@@ -257,8 +257,19 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\banner.jpg" />
+    <Content Include="Content\Blok1.jpg" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\DrzewicaCraftV2-NoBackground.png" />
+    <Content Include="Content\DrzewicaCraftV2-NoBackgroundWhite.png" />
+    <Content Include="Content\font-awesome.min.css" />
+    <Content Include="fonts\fontawesome-webfont.svg" />
+    <Content Include="Content\HerbCraft.png" />
+    <Content Include="Content\ie8.css" />
+    <Content Include="Content\overlay.png" />
+    <Content Include="Content\overlayWhite10.png" />
+    <Content Include="Content\overlayWhite5.png" />
     <Content Include="Database\EF\DrwaDB.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>DrwaDB.edmx</DependentUpon>
@@ -286,6 +297,11 @@
     <Content Include="Database\EF\DrwaDB.edmx.diagram">
       <DependentUpon>DrwaDB.edmx</DependentUpon>
     </Content>
+    <Content Include="fonts\fontawesome-webfont.eot" />
+    <Content Include="fonts\fontawesome-webfont.ttf" />
+    <Content Include="fonts\fontawesome-webfont.woff" />
+    <Content Include="fonts\fontawesome-webfont.woff2" />
+    <Content Include="fonts\FontAwesome.otf" />
     <None Include="Properties\PublishProfiles\CustomProfile.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
@@ -340,6 +356,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Content\fonts\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

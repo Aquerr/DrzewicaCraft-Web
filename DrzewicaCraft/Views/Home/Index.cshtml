@@ -2,37 +2,79 @@
     ViewBag.Title = "DrzewicaCraft";
 }
 
-<div class="jumbotron">
-    <h1>DrzewicaCraft</h1>
-    <p class="lead">DrzewicaCraft to projekt budownlany w grze, który wystartował w czerwcu 2016-go roku.</p>
-    <p class="lead">Celem projektu jest zbudowanie miasta Drzewica w popularnej grze komputerowej - Minecraft.</p>
-    <p><a href="" class="btn btn-primary btn-lg">Dowiedz się więcej &raquo;</a></p>
-</div>
-
-<div class="row">
-    <div class="col-md-4">
-        <p>@Html.ActionLink("Aktualność","Index","News",routeValues: null, htmlAttributes: new  { @class = "btn btn-default" })</p>
+<section id="banner">
+    <div>
+        <img src="~/Content/HerbCraft.png" class="bannerImage"/>
+        <h2 style="">Drzewica w zupełnie nowej odsłonie</h2>
     </div>
-</div>
+</section>
+
+@*<div class="jumbotron">
+        <h1>DrzewicaCraft</h1>
+        <p class="lead">DrzewicaCraft to projekt budownlany w grze, który wystartował w czerwcu 2016-go roku.</p>
+        <p class="lead">Celem projektu jest zbudowanie miasta Drzewica w popularnej grze komputerowej - Minecraft.</p>
+        <p><a href="" class="btn btn-primary btn-lg">Dowiedz się więcej &raquo;</a></p>
+    </div>*@
+
+<section id="main" class="container">
+    
+    <section class="box special">
+        <header class="major">
+            <h2>Całe miasto zbuduowane z największą percyzją w grze Minecraft.</h2>
+            <br />
+            @*<p>Tutaj testowa informacja napisana w paragrafie</p>*@
+        </header>
+    </section>
+    
+    <div class="row">
+        <div class="box special">
+            <section class=" box features-row">
+                <span class="image featured"><img src="~/Content/Blok1.jpg" alt=""></span>
+            </section>
+        </div>
+    </div>
+
+    @*<section class="box special">
+        <header class="major">
+            <h2>DrzewicaCraft to projekt budowlany w grze Minecraft, który wystartował w czerwcu 2016-go roku.</h2>
+            <br />
+            <p>Tutaj testowa informacja napisana w paragrafie</p>
+        </header>
+    </section>*@
+
+    @*<section class="box special features">
+        <div class="features-row">
+            <section>
+
+            </section>
+        </div>
+    </section>*@
+
+</section>
+@*<div class="row">
+        <div class="col-md-4">
+            <p>@Html.ActionLink("Aktualność","Index","News",routeValues: null, htmlAttributes: new  { @class = "btn btn-default" })</p>
+        </div>
+    </div>*@
 
 @*<div class="row">
-    <div class="col-md-4">
-        <h2>Getting started</h2>
-        <p>
-            ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
-            enables a clean separation of concerns and gives you full control over markup
-            for enjoyable, agile development.
-        </p>
-        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-        <h2>Get more libraries</h2>
-        <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
-        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-        <h2>Web Hosting</h2>
-        <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
-        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
-    </div>
-</div>*@
+        <div class="col-md-4">
+            <h2>Getting started</h2>
+            <p>
+                ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
+                enables a clean separation of concerns and gives you full control over markup
+                for enjoyable, agile development.
+            </p>
+            <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
+        </div>
+        <div class="col-md-4">
+            <h2>Get more libraries</h2>
+            <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
+            <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
+        </div>
+        <div class="col-md-4">
+            <h2>Web Hosting</h2>
+            <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
+            <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
+        </div>
+    </div>*@
