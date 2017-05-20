@@ -2432,6 +2432,10 @@ input[type="radio"] + label:before {
     max-width: 50%;
 }
 
+/*.nav {
+    display: block;
+}*/
+
 #scrollImageOne {
     position: relative;
     background-attachment: scroll, fixed;
@@ -2857,6 +2861,14 @@ body.landing #page-wrapper {
     top: 0;
     width: 100%;
     z-index: 10000;
+    display: block;
+}
+
+#header h1 img {
+    display: inherit;
+    position: relative;
+    max-height: 3em;
+    top: 0.1em;
 }
 
 #header h1 {
