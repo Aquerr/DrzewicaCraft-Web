@@ -70,20 +70,24 @@ body {
 
 .container.\31 25\25 {
     width: 100%;
-    max-width: 75em;
-    min-width: 60em;
+    max-width: 1700px;
+    min-width: 1360px;
 }
 
 .container.\37 5\25 {
-    width: 45em;
+    width: 1020px;
 }
 
 .container.\35 0\25 {
-    width: 30em;
+    width: 680px;
 }
 
 .container.\32 5\25 {
-    width: 15em;
+    width: 340px;
+}
+
+.container {
+    width: 1360px;
 }
 
 .container {
@@ -94,24 +98,24 @@ body {
 
     .container.\31 25\25 {
         width: 100%;
-        max-width: 75em;
-        min-width: 60em;
+        max-width: 1500px;
+        min-width: 1200px;
     }
 
     .container.\37 5\25 {
-        width: 45em;
+        width: 900px;
     }
 
     .container.\35 0\25 {
-        width: 30em;
+        width: 600px;
     }
 
     .container.\32 5\25 {
-        width: 15em;
+        width: 300px;
     }
 
     .container {
-        width: 60em;
+        width: 1200px;
     }
 
 }
@@ -120,50 +124,50 @@ body {
 
     .container.\31 25\25 {
         width: 100%;
-        max-width: 75em;
-        min-width: 60em;
+        max-width: 1200px;
+        min-width: 960px;
     }
 
     .container.\37 5\25 {
-        width: 45em;
+        width: 720px;
     }
 
     .container.\35 0\25 {
-        width: 30em;
+        width: 480px;
     }
 
     .container.\32 5\25 {
-        width: 15em;
+        width: 240px;
     }
 
     .container {
-        width: 60em;
+        width: 960px;
     }
 
 }
 
-@media screen and (max-width: 980px) {
+@media screen and (max-width: 1000px) {
 
     .container.\31 25\25 {
         width: 100%;
-        max-width: 112.5%;
-        min-width: 90%;
+        max-width: 125%;
+        min-width: 100%;
     }
 
     .container.\37 5\25 {
-        width: 67.5%;
+        width: 75%;
     }
 
     .container.\35 0\25 {
-        width: 45%;
+        width: 50%;
     }
 
     .container.\32 5\25 {
-        width: 22.5%;
+        width: 25%;
     }
 
     .container {
-        width: 90%;
+        width: 100% !important;
     }
 
 }
@@ -172,24 +176,24 @@ body {
 
     .container.\31 25\25 {
         width: 100%;
-        max-width: 112.5%;
-        min-width: 90%;
+        max-width: 125%;
+        min-width: 100%;
     }
 
     .container.\37 5\25 {
-        width: 67.5%;
+        width: 75%;
     }
 
     .container.\35 0\25 {
-        width: 45%;
+        width: 50%;
     }
 
     .container.\32 5\25 {
-        width: 22.5%;
+        width: 25%;
     }
 
     .container {
-        width: 90% !important;
+        width: 100% !important;
     }
 
 }
@@ -2375,16 +2379,22 @@ input[type="radio"] + label:before {
 
 /* Image */
 
-.image {
-    border-radius: 6px;
-    border: 0;
+.image{
+    /*border-radius: 6px;*/
+    width: 100%;
+    border-radius: 0.5em;
     display: inline-block;
-    position: relative;
+    max-width: 600px;
 }
 
-.image img {
-    border-radius: 6px;
-    display: block;
+.image:after {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    /*background: url("images/overlay.png");*/
 }
 
 .image.left {
@@ -2408,6 +2418,33 @@ input[type="radio"] + label:before {
 .image.fit img {
     display: block;
     width: 100%;
+}
+
+.image.featured {
+    display: block;
+    width: 100%;
+    margin: 0 0 2em 0;
+}
+
+#herb {
+    position: relative;
+    display: inline-block;
+    max-width: 50%;
+}
+
+#scrollImageOne {
+    position: relative;
+    background-attachment: scroll, fixed;
+    background-image: url('overlayWhite5.png'),url('Blok1.jpg');
+    background-position: top left, center center;
+    background-repeat: repeat, no-repeat;
+    /*width: 100%;*/
+    /*display: block;*/
+    background-size: auto,cover;
+    padding: 8em 0 8em 0;
+    margin: 0;
+    text-align: center;
+    color: #fff;
 }
 
 /* List */
@@ -3044,14 +3081,16 @@ body.landing #page-wrapper {
 
 #banner {
     background-attachment: scroll, fixed;
-    background-color: #fff;
+    position: relative;
+    /*background-color: #fff;*/
     background-image: url('overlayWhite5.png'),url('banner.jpg');
     background-position: top left, center center;
     background-repeat: repeat, no-repeat;
     background-size: auto, cover;
     color: #fff;
-    padding: 12em 0 20em 0;
+    padding: 14em 0 14em 0;
     text-align: center;
+    margin: 0;
 }
 
 #banner :last-child {
@@ -3109,10 +3148,12 @@ body.landing #page-wrapper {
 /* Main */
 
 #main {
-    padding: 4em 0;
+    /*padding: 4em 0;*/
+    position: relative;
+    margin: 0;
 }
 
-#main > header {
+/*#main > header {
     text-align: center;
     margin: 0 0 3em 0;
 }
@@ -3120,19 +3161,42 @@ body.landing #page-wrapper {
 #main > header h2 {
     font-size: 2.75em;
     margin: 0;
-}
+}*/
 
-#main > header p {
+/*#main > header p {
     border-top: solid 2px #e5e5e5;
     color: #777;
     display: inline-block;
     font-style: normal;
     margin: 1em 0 0 0;
     padding: 1em 0 1.25em 0;
+}*/
+
+/*body.landing #main {
+    margin-top: -14em;
+}*/
+
+.main > header {
+    background: #fff;
+    text-align: center;
+    padding: 5em 0 5em 0;
+    margin: 0;
 }
 
-body.landing #main {
-    margin-top: -14em;
+.main > header h2 {
+    font-size: 2.25em;
+    font-weight: 100;
+    margin-bottom: 0;
+}
+
+.main > header p {
+    margin: 2em 0 0 0;
+    padding: 0;
+    text-align: center;
+}
+
+.main > .content {
+    padding: 6em 0 6em 0;
 }
 
 /* Footer */

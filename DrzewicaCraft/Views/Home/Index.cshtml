@@ -3,10 +3,8 @@
 }
 
 <section id="banner">
-    <div>
-        <img src="~/Content/HerbCraft.png" class="bannerImage"/>
+        <span class=""><img id="herb" src="~/Content/HerbCraft.png" alt=""/></span>
         <h2 style="">Drzewica w zupełnie nowej odsłonie</h2>
-    </div>
 </section>
 
 @*<div class="jumbotron">
@@ -16,24 +14,22 @@
         <p><a href="" class="btn btn-primary btn-lg">Dowiedz się więcej &raquo;</a></p>
     </div>*@
 
-<section id="main" class="container">
+<section class="main">
     
-    <section class="box special">
-        <header class="major">
-            <h2>Całe miasto zbuduowane z największą percyzją w grze Minecraft.</h2>
-            <br />
-            @*<p>Tutaj testowa informacja napisana w paragrafie</p>*@
-        </header>
-    </section>
-    
-    <div class="row">
-        <div class="box special">
-            <section class=" box features-row">
-                <span class="image featured"><img src="~/Content/Blok1.jpg" alt=""></span>
-            </section>
+    @*<section class="box special">*@
+    <header>
+        <div class="container">
+            <h2>Całe miasto zbuduowane z największą precyzją w grze Minecraft!</h2>
         </div>
-    </div>
-
+        @*<p>Tutaj testowa informacja napisana w paragrafie</p>*@
+    </header>
+    @*<div class="content">
+        <div class="container">
+            
+        </div>
+    </div>*@
+    @*</section>*@
+    
     @*<section class="box special">
         <header class="major">
             <h2>DrzewicaCraft to projekt budowlany w grze Minecraft, który wystartował w czerwcu 2016-go roku.</h2>
@@ -51,6 +47,25 @@
     </section>*@
 
 </section>
+
+<section id="scrollImageOne"></section>
+
+<section class="main">
+    <header>
+        <div class="container">
+            <h2>DrzewicaCraft to projekt budowlany, który wystartował w czerwcu 2016 roku.</h2>
+        </div>
+    </header>
+</section>
+
+@*<section class="main">
+    <div class="content">
+        <div class=" container">
+            <span class="image featured"><img src="~/Content/Blok1.jpg" alt=""></span>
+            <span class="image featured"><img src="~/Content/Blok2.jpg" alt=""/></span>
+        </div>
+    </div>   
+</section>*@
 @*<div class="row">
         <div class="col-md-4">
             <p>@Html.ActionLink("Aktualność","Index","News",routeValues: null, htmlAttributes: new  { @class = "btn btn-default" })</p>

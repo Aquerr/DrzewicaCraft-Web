@@ -259,11 +259,13 @@
   <ItemGroup>
     <Content Include="Content\banner.jpg" />
     <Content Include="Content\Blok1.jpg" />
+    <Content Include="Content\Blok2.jpg" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\DrzewicaCraftV2-NoBackground.png" />
     <Content Include="Content\DrzewicaCraftV2-NoBackgroundWhite.png" />
     <Content Include="Content\font-awesome.min.css" />
+    <Content Include="Content\LogoBlack.png" />
     <Content Include="fonts\fontawesome-webfont.svg" />
     <Content Include="Content\HerbCraft.png" />
     <Content Include="Content\ie8.css" />
