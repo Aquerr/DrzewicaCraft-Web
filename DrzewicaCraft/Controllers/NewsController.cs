@@ -1,4 +1,5 @@
 ﻿using DrzewicaCraft.Models;
+using DrzewicaCraft.Database;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,6 +13,9 @@ namespace DrzewicaCraft.Controllers
         // GET: News
         public ActionResult Index()
         {
+
+           // var test = DataCollector.GetPhotos();
+
             var model = new List<NewsViewModels>()
             {
                 new NewsViewModels() {Id = 1, Title = "Dedykowany serwer naszego projektu właśnie wystartował!"},
