@@ -3364,6 +3364,10 @@ body.landing #page-wrapper {
         background-attachment: scroll;
     }
 
+    #scrollImageOne {
+        background-attachment: scroll;
+    }
+
     #banner h2 {
         font-size: 3.5em;
     }
