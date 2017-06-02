@@ -3398,11 +3398,11 @@ body.landing #page-wrapper {
     /* Banner */
 
     #banner {
-        background-attachment: scroll;
+        background-attachment: fixed;
     }
 
     #scrollImageOne {
-        background-attachment: scroll;
+        background-attachment: fixed;
     }
 
     #banner h2 {
@@ -3419,6 +3419,18 @@ body.landing #page-wrapper {
 
     body, input, select, textarea {
         font-size: 11pt;
+    }
+
+    /* Banner */
+
+    #banner {
+        background-attachment: fixed;
+    }
+
+    /* scrollImageOne*/
+
+    #scrollImageOne {
+        background-attachment: fixed;
     }
 
 }
