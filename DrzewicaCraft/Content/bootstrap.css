@@ -3424,13 +3424,13 @@ body.landing #page-wrapper {
     /* Banner */
 
     #banner {
-        background-attachment: fixed;
+        background-attachment: scroll;
     }
 
     /* scrollImageOne*/
 
     #scrollImageOne {
-        background-attachment: fixed;
+        background-attachment: scroll;
     }
 
 }
