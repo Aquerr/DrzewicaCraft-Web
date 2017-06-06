@@ -4,11 +4,14 @@
     ViewBag.Title = "Aktualności";
 }
 
-<h2 style="text-align: center">Aktualności</h2>
+<h2 style="text-align: center; margin-top: 1em">Aktualności</h2>
 
 <section class="main">
     <p style="text-align: center">
-        @Html.ActionLink("Utwórz nowy wpis", "Create")
+        @if (ViewContext.HttpContext.User.IsInRole("Admin"))
+        {
+            @Html.ActionLink("Utwórz nowy wpis", "Create")
+        }
     </p>
     
     <div class="newsContainer">
@@ -19,8 +22,8 @@
                 <div class="newsTemplate">
                     <header class="newsTitle">@item.Title</header>                  
                     <div class="newsDesc">@item.Description</div>
-                    <div class="newsTime">@item.DateTime</div>
                     <div class="newsAuthor">Autor</div>
+                    <div class="newsTime">@item.DateTime</div>
                 </div>
             }
         }
