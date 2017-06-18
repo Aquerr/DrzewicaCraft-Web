@@ -8,11 +8,11 @@ using DrzewicaCraft.Database;
 
 namespace DrzewicaCraft.Controllers
 {
-    public class PhotoController : Controller
+    public class PhotosController : Controller
     {
         private readonly DataCollector _dataCollector;
 
-        public PhotoController()
+        public PhotosController()
         {
             _dataCollector = new DataCollector();
         }

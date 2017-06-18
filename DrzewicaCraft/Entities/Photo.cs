@@ -13,7 +13,7 @@ namespace DrzewicaCraft.Entities
         public int Likes { get; set; }
         public List<Comment> Comments { get; set; }
         public DateTime DateTime { get; set; }
-        public Uri ImagePath { get; set; }
+        public string ImagePath { get; set; }
     }
 
     public class Comment
