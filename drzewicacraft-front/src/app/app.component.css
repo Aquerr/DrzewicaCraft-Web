@@ -1,0 +1,20 @@
+.header {
+  background: #fff;
+  color: #bbb;
+  cursor: default;
+  height: 3.25em;
+  left: 0;
+  line-height: 3.25em;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  z-index: 1;
+  display: block;
+  transition: all 1s;
+}
+
+.footer {
+  background: #f0f0f0;
+  padding: 4em 0 6em 0;
+  text-align: center;
+}

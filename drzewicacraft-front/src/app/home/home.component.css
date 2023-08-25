@@ -1,0 +1,64 @@
+#banner {
+  background-attachment: scroll, fixed;
+  position: relative;
+  background-color: #fff;
+  background-image: url('/assets/images/overlayWhite5.png'), url('/assets/images/banner.jpg');
+  background-position: top left, center center;
+  background-repeat: repeat, no-repeat;
+  background-size: auto, cover;
+  color: #fff;
+  padding: 10em 0 10em 0;
+  text-align: center;
+  margin: 0;
+}
+
+#scrollImageOne {
+  position: relative;
+  background-attachment: scroll, fixed;
+  background-image: url('/assets/images/overlayWhite5.png'), url('/assets/images/Blok1.jpg');
+  background-position: top left, center center;
+  background-repeat: repeat, no-repeat;
+  /*width: 100%;*/
+  /*display: block;*/
+  background-size: auto,cover;
+  padding: 8em 0 8em 0;
+  margin: 0;
+  text-align: center;
+  color: #fff;
+}
+
+.container {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.page-wrapper {
+  padding-top: 0;
+}
+
+section {
+  display: block;
+  box-sizing: border-box;
+}
+
+#herb {
+  position: relative;
+  max-width: 20%;
+}
+
+section h1 {
+  font-size: 3rem;
+}
+
+header {
+  padding: 4em 0 4em 0;
+}
+
+.text-section {
+  background-color: #fff;
+  text-align: center;
+}
+
+section h2 {
+  font-size: 2.25rem;
+}

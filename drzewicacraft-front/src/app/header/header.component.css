@@ -1,0 +1,76 @@
+.banner img {
+  display: inherit;
+  position: relative;
+  max-height: 3em;
+  top: 0.1em;
+}
+
+.banner {
+  color: inherit;
+  height: inherit;
+  left: 1.25em;
+  line-height: inherit;
+  margin: 0;
+  padding: 0;
+  position: absolute;
+  top: 0;
+}
+
+ nav {
+  height: inherit;
+  line-height: inherit;
+  position: absolute;
+  right: 0.75em;
+  top: 0;
+  vertical-align: middle;
+}
+
+ nav > ul {
+  list-style: none;
+  margin: 0;
+  padding-left: 0;
+}
+
+ nav > ul > li {
+  display: inline-block;
+   padding: 0 1em;
+  color: #555;
+  cursor: pointer;
+}
+
+ nav > ul > li > ul {
+  display: none;
+}
+
+ nav > ul > li a {
+  display: inline-block;
+  height: 2em;
+  line-height: 1.95em;
+  padding: 0 1em;
+  border-radius: 6px;
+}
+
+ nav > ul > li a:not(.button) {
+  color: #fff;
+  display: inline-block;
+  text-decoration: none;
+  border: 0;
+}
+
+ nav > ul > li a:not(.button).icon:before {
+  color: #999;
+  margin-right: 0.5em;
+}
+
+ nav > ul > li:first-child {
+  margin-left: 0;
+}
+
+ nav > ul > li.active a:not(.button) {
+  background-color: rgba(153, 153, 153, 0.25);
+}
+
+ nav > ul > li .button {
+  margin: 0 0 0 0.5em;
+  position: relative;
+}
