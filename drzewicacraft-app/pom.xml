@@ -119,7 +119,7 @@
 				  <outputDirectory>${project.build.directory}/classes/static</outputDirectory>
 				  <resources>
 					<resource>
-					  <directory>${project.parent.baseDir}/drzewicacraft-front/dist</directory>
+					  <directory>${project.parent.basedir}/drzewicacraft-front/dist</directory>
 					</resource>
 				  </resources>
 				</configuration>
