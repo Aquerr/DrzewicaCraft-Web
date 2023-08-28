@@ -11,12 +11,16 @@
 	<artifactId>drzewicacraft-app</artifactId>
 	<packaging>jar</packaging>
 
+	<properties>
+		<jjwt.version>0.11.5</jjwt.version>
+	</properties>
+
 	<dependencies>
-    <dependency>
-      <groupId>pl.bartlomiejstepien</groupId>
-      <artifactId>drzewicacraft-front</artifactId>
-      <version>${revision}</version>
-    </dependency>
+		<dependency>
+		  <groupId>pl.bartlomiejstepien</groupId>
+		  <artifactId>drzewicacraft-front</artifactId>
+		  <version>${revision}</version>
+		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-data-jpa</artifactId>
@@ -28,6 +32,24 @@
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>io.jsonwebtoken</groupId>
+			<artifactId>jjwt-api</artifactId>
+			<version>${jjwt.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>io.jsonwebtoken</groupId>
+			<artifactId>jjwt-impl</artifactId>
+			<version>${jjwt.version}</version>
+			<scope>runtime</scope>
+		</dependency>
+		<dependency>
+			<groupId>io.jsonwebtoken</groupId>
+			<artifactId>jjwt-jackson</artifactId>
+			<version>${jjwt.version}</version>
+			<scope>runtime</scope>
 		</dependency>
 
 		<dependency>
