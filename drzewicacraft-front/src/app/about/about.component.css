@@ -1,7 +1,16 @@
 .about {
-  margin-top: 4em;
+  margin-top: 1em;
 }
 
 .text-center {
   text-align: center;
+}
+
+.about-text {
+  padding-left: 20px;
+  padding-right: 20px;
+  text-align: left;
+  word-wrap: break-word;
+  display: block;
+  font-size: 18px;
 }
