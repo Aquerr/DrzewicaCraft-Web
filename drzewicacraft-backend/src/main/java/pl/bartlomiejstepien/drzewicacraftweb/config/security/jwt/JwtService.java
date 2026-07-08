@@ -1,20 +1,19 @@
 package pl.bartlomiejstepien.drzewicacraftweb.config.security.jwt;
 
 import io.jsonwebtoken.Claims;
-import io.jsonwebtoken.CompressionCodecs;
+import io.jsonwebtoken.ClaimsBuilder;
 import io.jsonwebtoken.Jws;
 import io.jsonwebtoken.Jwts;
-import io.jsonwebtoken.SignatureAlgorithm;
-import io.jsonwebtoken.security.Keys;
-import jakarta.annotation.PostConstruct;
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.context.event.ApplicationReadyEvent;
+import org.springframework.context.event.EventListener;
 import org.springframework.stereotype.Service;
 import pl.bartlomiejstepien.drzewicacraftweb.config.security.AuthenticatedUser;
 
-import java.security.Key;
+import javax.crypto.SecretKey;
 import java.time.Duration;
 import java.time.Instant;
 import java.time.ZoneId;
@@ -34,10 +33,10 @@ import java.util.concurrent.TimeUnit;
 public final class JwtService {
     private static final String AUTHORIZATION_HEADER = "Authorization";
     private static final String BEARER = "Bearer ";
-    private static final Key KEY = Keys.secretKeyFor(SignatureAlgorithm.HS256);
+    private static final SecretKey KEY = Jwts.SIG.HS256.key().build();
 
     private static final Map<String, BlackListedJwt> BLACK_LISTED_JWTS = new HashMap<>();
-    private static ScheduledExecutorService BLACK_LISTED_JWTS_CLEARER_EXECUTOR_SERVICE = Executors.newSingleThreadScheduledExecutor();
+    private static final ScheduledExecutorService BLACK_LISTED_JWTS_CLEARER_EXECUTOR_SERVICE = Executors.newSingleThreadScheduledExecutor();
 
     static {
         BLACK_LISTED_JWTS_CLEARER_EXECUTOR_SERVICE.scheduleAtFixedRate(JwtService::clearBlacklistedJwts, 1, 1, TimeUnit.HOURS);
@@ -46,9 +45,9 @@ public final class JwtService {
     {
         for (final BlackListedJwt blackListedJwt : List.copyOf(BLACK_LISTED_JWTS.values()))
         {
-            if (ZonedDateTime.now().isAfter(blackListedJwt.getExpirationTime()))
+            if (ZonedDateTime.now().isAfter(blackListedJwt.expirationTime()))
             {
-                BLACK_LISTED_JWTS.remove(blackListedJwt.getJwt());
+                BLACK_LISTED_JWTS.remove(blackListedJwt.jwt());
             }
         }
     }
@@ -62,40 +61,42 @@ public final class JwtService {
     @Value("${drzewicacraft.security.jwt.longer-expiration-time}")
     private Duration jwtLongerExpirationTime;
 
-    @PostConstruct
-    void initBlacklistedJwts()
+    @EventListener
+    public void onApplicationReady(ApplicationReadyEvent event)
     {
-//        invalidJwtTokenRepository.findAll().stream()
-//                .map(invalidJwtTokenEntity -> BlackListedJwt.of(invalidJwtTokenEntity.getJwt(), invalidJwtTokenEntity.getExpirationDateTime()))
-//                .forEach(blackListedJwt -> BLACK_LISTED_JWTS.put(blackListedJwt.getJwt(), blackListedJwt));
+//        invalidJwtTokenRepository.findAll()
+//                .stream()
+//                .map(invalidJwtTokenEntity -> new BlackListedJwt(invalidJwtTokenEntity.getJwt(), invalidJwtTokenEntity.getExpirationDateTime()))
+//                .forEach(blackListedJwt -> BLACK_LISTED_JWTS.put(blackListedJwt.jwt(), blackListedJwt));
     }
 
     public String createJwt(AuthenticatedUser authenticatedUser, boolean rememberMe) {
-        Claims claims = Jwts.claims()
-                .setSubject(authenticatedUser.getUsername())
-                .setIssuer(jwtIssuer)
-                .setNotBefore(Date.from(Instant.now()))
-                .setExpiration(Date.from(Instant.now().plus(jwtExpirationTime)))
-                .setIssuedAt(Date.from(Instant.now()));
+        ClaimsBuilder claimsBuilder = Jwts.claims()
+                .subject(authenticatedUser.getUsername())
+                .issuer(jwtIssuer)
+                .notBefore(Date.from(Instant.now()))
+                .expiration(Date.from(Instant.now().plus(jwtExpirationTime)))
+                .issuedAt(Date.from(Instant.now()));
 
-        setExpirationTime(claims, rememberMe);
+        setExpirationTime(claimsBuilder, rememberMe);
 
-        claims.put("authorities", authenticatedUser.getAuthorities());
+        claimsBuilder.add("authorities", authenticatedUser.getAuthorities());
 
         return Jwts.builder()
-                .setSubject(authenticatedUser.getUsername())
                 .signWith(KEY)
-                .compressWith(CompressionCodecs.DEFLATE)
-                .setClaims(claims)
+                .issuer(jwtIssuer)
+                .compressWith(Jwts.ZIP.DEF)
+                .issuedAt(Date.from(Instant.now()))
+                .claims(claimsBuilder.build())
                 .compact();
     }
 
-    private void setExpirationTime(Claims claims, boolean rememberMe)
+    private void setExpirationTime(ClaimsBuilder claimsBuilder, boolean rememberMe)
     {
         if (rememberMe) {
-            claims.setExpiration(Date.from(Instant.now().plus(jwtLongerExpirationTime)));
+            claimsBuilder.expiration(Date.from(Instant.now().plus(jwtLongerExpirationTime)));
         } else {
-            claims.setExpiration(Date.from(Instant.now().plus(jwtExpirationTime)));
+            claimsBuilder.expiration(Date.from(Instant.now().plus(jwtExpirationTime)));
         }
     }
 
@@ -104,11 +105,11 @@ public final class JwtService {
             throw new IllegalStateException();
 
         try {
-            return Jwts.parserBuilder()
-                    .setSigningKey(KEY)
+            return Jwts.parser()
+                    .verifyWith(KEY)
                     .requireIssuer(jwtIssuer)
                     .build()
-                    .parseClaimsJws(jwt);
+                    .parseSignedClaims(jwt);
         } catch (Exception exception) {
             log.error(exception.getMessage());
             throw exception;
@@ -124,27 +125,26 @@ public final class JwtService {
 
     public void invalidate(String jwt) {
         Jws<Claims> jws = validateJwt(jwt);
-        Date exprationDate = jws.getBody().getExpiration();
-        ZonedDateTime expirationDateTime = exprationDate.toInstant().atZone(ZoneId.systemDefault());
-        BLACK_LISTED_JWTS.put(jwt, BlackListedJwt.of(jwt, expirationDateTime));
+        ZonedDateTime expirationDateTime = jws.getPayload().getExpiration().toInstant().atZone(ZoneId.systemDefault());
+
+        BLACK_LISTED_JWTS.put(jwt, new BlackListedJwt(jwt, expirationDateTime));
 
 //        InvalidJwtTokenEntity invalidJwtTokenEntity = new InvalidJwtTokenEntity();
+//        invalidJwtTokenEntity.setJwt(jwt);
+//        invalidJwtTokenEntity.setInvalidatedDateTime(ZonedDateTime.now());
+//        invalidJwtTokenEntity.setExpirationDateTime(expirationDateTime);
+
 //        try
 //        {
-//            invalidJwtTokenEntity.setJwt(jwt);
-//            invalidJwtTokenEntity.setInvalidatedDateTime(ZonedDateTime.now());
-//            invalidJwtTokenEntity.setExpirationDateTime(expirationDateTime);
 //            invalidJwtTokenRepository.save(invalidJwtTokenEntity);
 //        }
 //        catch (Exception exception)
 //        {
-//            log.error("Could not save invalid jwt token entity = " + invalidJwtTokenEntity, exception);
+//            log.error("Could not save invalid jwt '{}'", jwt, exception);
 //        }
     }
 
-    @lombok.Value(staticConstructor = "of")
-    private static class BlackListedJwt {
-        String jwt;
-        ZonedDateTime expirationTime;
+    private record BlackListedJwt(String jwt, ZonedDateTime expirationTime)
+    {
     }
 }

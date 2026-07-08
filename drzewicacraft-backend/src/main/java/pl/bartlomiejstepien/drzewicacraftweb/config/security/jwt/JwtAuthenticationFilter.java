@@ -25,7 +25,7 @@ import java.io.IOException;
 public class JwtAuthenticationFilter extends OncePerRequestFilter
 {
     private final JwtService jwtService;
-    private final DrzewicaCraftUserDetailsService rentaCarUserDetailsService;
+    private final DrzewicaCraftUserDetailsService drzewicaCraftUserDetailsService;
 
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException
@@ -54,8 +54,8 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter
 
     private void authenticate(Jws<Claims> claimsJws, HttpServletRequest request)
     {
-        String username = claimsJws.getBody().getSubject();
-        AuthenticatedUser authenticatedUser = rentaCarUserDetailsService.loadUserByUsername(username);
+        String username = claimsJws.getPayload().getSubject();
+        AuthenticatedUser authenticatedUser = drzewicaCraftUserDetailsService.loadUserByUsername(username);
         UsernamePasswordAuthenticationToken usernamePasswordAuthenticationToken = UsernamePasswordAuthenticationToken.authenticated(authenticatedUser, authenticatedUser.getPassword(), authenticatedUser.getAuthorities());
         usernamePasswordAuthenticationToken.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
         SecurityContextHolder.getContext().setAuthentication(usernamePasswordAuthenticationToken);

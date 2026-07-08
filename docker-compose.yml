@@ -1,0 +1,14 @@
+services:
+  drzewicacraft-web:
+    container_name: drzewicacraft-web
+    restart: unless-stopped
+    image: aquerr/drzewicacraft-web:latest
+    environment:
+      PUID: ???
+      PGID: ???
+    ports:
+      - "8083:8083"
+    volumes:
+      - ./config:/opt/app/config
+      - ./data:/opt/app/data
+      - ./logs:/opt/app/logs

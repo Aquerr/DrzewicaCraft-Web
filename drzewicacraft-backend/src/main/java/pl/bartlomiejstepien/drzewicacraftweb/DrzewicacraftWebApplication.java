@@ -4,10 +4,11 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class DrzewicacraftwebApplication {
+public class DrzewicacraftWebApplication
+{
 
-	public static void main(String[] args) {
-		SpringApplication.run(DrzewicacraftwebApplication.class, args);
+	static void main(String[] args) {
+		SpringApplication.run(DrzewicacraftWebApplication.class, args);
 	}
 
 }
