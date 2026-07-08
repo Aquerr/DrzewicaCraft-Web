@@ -24,7 +24,7 @@ ENV LC_ALL="en_US.UTF-8"
 
 WORKDIR /opt/app
 
-COPY drzewicacraft-backend/target/drzewicacraft-backend-1.0.0-SNAPSHOT ./drzewicacraft-web.jar
+COPY drzewicacraft-backend/target/drzewicacraft-backend-1.0.0-SNAPSHOT.jar ./drzewicacraft-web.jar
 COPY --chmod=755 entrypoint.sh /entrypoint.sh
 RUN chmod +x /entrypoint.sh
 
